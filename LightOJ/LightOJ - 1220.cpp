@@ -54,15 +54,20 @@ int main(){
         }
         sort(vec.begin(),vec.end());
         bool bl=true;
+        ll g;
         for(int i=0;i<vec.size();i++){
-            if(vec[i]%vec[0]!=0)bl=false;
+            if(i==0){
+                g=vec[i];
+                continue;
+            }
+            g= __gcd(vec[i],g);
         }
         if(sn==false){
-            if(bl==true && vec[0]%2LL==1){
-                cout<<vec[0]<<"\n";
+            if(vec[0]%2LL==1){
+                cout<<g<<"\n";
             }
             else{
-                int cur = vec[0];
+                int cur = g;
                 while(cur%2==0){
                     cur/=2;
 
@@ -70,11 +75,8 @@ int main(){
                 cout<<cur<<"\n";
             }
         }
-        else if(bl==true){
-            cout<<vec[0]<<"\n";
-        }
         else{
-            cout<<1<<"\n";
+            cout<<g<<"\n";
         }
     }
 }
